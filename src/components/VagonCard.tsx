@@ -73,13 +73,15 @@ export const VagonCard = ({ vagon }: Props) => {
         borderColor: "heroGradientStart",
       }}
     >
-      <NextLink href={`/vagons/${vagon.VagonNumber}`} passHref>
-        <Link _hover={{ textDecoration: "none", color: "heroGradientStart" }}>
-          <Heading color="heroGradientStart" size="md" cursor="pointer">
-            Вагон №{vagon.VagonNumber}
-          </Heading>
-        </Link>
-      </NextLink>
+      <Link
+        as={NextLink}
+        href={`/vagons/${vagon.VagonNumber}`}
+        _hover={{ textDecoration: "none", color: "heroGradientStart" }}
+      >
+        <Heading color="heroGradientStart" size="md" cursor="pointer">
+          Вагон №{vagon.VagonNumber}
+        </Heading>
+      </Link>
       <Stack gap={2}>
         <Text fontSize="sm">Тип: {vagon.VagonType}</Text>
         <Text fontSize="sm">Груз: {vagon.CargoName}</Text>

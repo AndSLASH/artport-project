@@ -121,8 +121,13 @@ export default function GalleryPage() {
       <Text fontSize="lg" fontWeight="bold" color="heroGradientStart">
         Найдено фото: {filtered.length}
       </Text>
-      {photos.length === 0 && (
+      {filtered.length === 0 && photos.length !== 0 && (
         <Text textAlign="center" mt={10} color="red.500">
+          Нет фото вагонов, соответствующих критериям поиска.
+        </Text>
+      )}
+      {photos.length === 0 && (
+        <Text textAlign="center" mt={10} color="text">
           Нет сохраненных фото вагонов.
         </Text>
       )}

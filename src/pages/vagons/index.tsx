@@ -112,9 +112,14 @@ const VagonsPage = ({ vagons }: Props) => {
       <Text fontSize="lg" fontWeight="bold" color="heroGradientStart">
         Найдено вагонов: {filtered.length}
       </Text>
-      {filtered.length === 0 && (
+      {filtered.length === 0 && vagons.length !== 0 && (
         <Text fontSize="lg" mt={10} color="red.500">
           Нет вагонов, соответствующих критериям поиска.
+        </Text>
+      )}
+      {vagons.length === 0 && (
+        <Text textAlign="center" mt={10} color="text">
+          Нет вагонов.
         </Text>
       )}
       <SimpleGrid columns={[1, 2, 3, 4]} gap={5} justifyItems="center">

@@ -31,18 +31,20 @@ export const VagonPhoto = ({ photo, onDelete }: Props) => (
       borderColor: "heroGradientStart",
     }}
   >
-    <NextLink href={`/vagons/${photo.vagonNumber}`} passHref>
-      <Link _hover={{ textDecoration: "none", color: "heroGradientStart" }}>
-        <Image
-          display="flex"
-          src={photo.src}
-          alt={`Фото вагона ${photo.vagonNumber}`}
-          width="100%"
-          height="200px"
-          objectFit="cover"
-        />
-      </Link>
-    </NextLink>
+    <Link
+      as={NextLink}
+      href={`/vagons/${photo.vagonNumber}`}
+      _hover={{ textDecoration: "none", color: "heroGradientStart" }}
+    >
+      <Image
+        display="flex"
+        src={photo.src}
+        alt={`Фото вагона ${photo.vagonNumber}`}
+        width="100%"
+        height="200px"
+        objectFit="cover"
+      />
+    </Link>
     <VStack spacing={2} align="center" pb={4}>
       <VStack spacing={1} align="center">
         <Text fontWeight="bold">Вагон №{photo.vagonNumber}</Text>
