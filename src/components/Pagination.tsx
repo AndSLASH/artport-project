@@ -15,9 +15,8 @@ const Pagination = ({
 }: PaginationProps) => {
   if (pageCount <= 1) return null;
 
-  // Параметри для скороченої пагінації
-  const siblingCount = 1; // кількість сусідніх сторінок
-  const boundaryCount = 1; // кількість сторінок на початку/кінці
+  const siblingCount = 1;
+  const boundaryCount = 1;
 
   const range: (number | string)[] = [];
   const showDots = pageCount > 7;
