@@ -123,7 +123,7 @@ export default function GalleryPage() {
       </Text>
       {photos.length === 0 && (
         <Text textAlign="center" mt={10} color="red.500">
-          Немає збережених фото вагонів.
+          Нет сохраненных фото вагонов.
         </Text>
       )}
       <SimpleGrid columns={[1, 2, 3, 4]} gap={5} justifyItems="center">
