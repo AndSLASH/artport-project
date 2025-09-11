@@ -1,0 +1,21 @@
+export type Vagon = {
+  VagonNumber: string;
+  VagonType: string;
+  VagonIsCovered: boolean;
+  WeightBrutto: number;
+  WeightNet: number;
+  WeghtTare: number;
+  ProcessingKind: string;
+  OperationKind: string;
+  CargoName: string;
+  OwnerName: string;
+  IsPrivate: boolean;
+  ShipperName: string;
+  ReceiverName: string;
+  RailwayOwn: string;
+  RailbillNumber: string;
+  Capacity: number;
+  DepartureStationName: string;
+  DestinationCountryName: string;
+  CargoStamps: string;
+};
