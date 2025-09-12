@@ -92,11 +92,13 @@ export const VagonCard = ({ vagon }: Props) => {
       </Stack>
       <Button
         leftIcon={<PlusSquareIcon />}
+        bg="gray.300"
+        _dark={{ bg: "gray.700" }}
         color="heroGradientEnd"
         _hover={{ color: "heroGradientStart" }}
         onClick={() => inputRef.current?.click()}
       >
-        Завантажити фото
+        Загрузить фото
       </Button>
       <Input
         type="file"
