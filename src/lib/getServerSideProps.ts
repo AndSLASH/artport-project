@@ -1,15 +1,15 @@
-import { GetServerSideProps } from "next";
-import { Vagon } from "../types/vagon";
+import { GetServerSideProps } from 'next';
+import { Vagon } from '../types/vagon';
 
 type Props = {
   vagons: Vagon[];
 };
 
 export const getVagonsServerSideProps: GetServerSideProps<Props> = async () => {
-  const res = await fetch(
-    "https://rwl.artport.pro/commercialAgent/hs/CarrWorkApp/VagonInfo",
-    { method: "GET", cache: "no-store" }
-  );
+  const res = await fetch('https://rwl.artport.pro/commercialAgent/hs/CarrWorkApp/VagonInfo', {
+    method: 'GET',
+    cache: 'no-store',
+  });
   const data = await res.json();
   const vagons: Vagon[] = data.Vagons.map((vagon: any) => ({
     VagonNumber: vagon.VagonNumber,
@@ -26,13 +26,13 @@ export const getVagonsServerSideProps: GetServerSideProps<Props> = async () => {
   };
 };
 
-export async function getVagonByIdServerSideProps(
+export const getVagonByIdServerSideProps = async (
   id: string
-): Promise<{ props: { formattedVagon: Vagon | null } }> {
-  const res = await fetch(
-    "https://rwl.artport.pro/commercialAgent/hs/CarrWorkApp/VagonInfo",
-    { method: "GET", cache: "no-store" }
-  );
+): Promise<{ props: { formattedVagon: Vagon | null } }> => {
+  const res = await fetch('https://rwl.artport.pro/commercialAgent/hs/CarrWorkApp/VagonInfo', {
+    method: 'GET',
+    cache: 'no-store',
+  });
   if (!res.ok) {
     return {
       props: {
@@ -75,4 +75,4 @@ export async function getVagonByIdServerSideProps(
       formattedVagon,
     },
   };
-}
+};

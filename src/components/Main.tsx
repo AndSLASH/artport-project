@@ -1,4 +1,4 @@
-import { Stack, StackProps } from "@chakra-ui/react";
+import { Stack, StackProps } from '@chakra-ui/react';
 
 export const Main = (props: StackProps) => (
   <Stack
@@ -10,7 +10,7 @@ export const Main = (props: StackProps) => (
     px={4}
     bg="gray.50"
     color="text"
-    _dark={{ bg: "gray.900", color: "text" }}
+    _dark={{ bg: 'gray.900', color: 'text' }}
     {...props}
   />
 );

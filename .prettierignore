@@ -1,0 +1,11 @@
+# Ignore artifacts and dependencies
+node_modules
+.next
+build
+dist
+coverage
+public/*.svg
+public/*.ico
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

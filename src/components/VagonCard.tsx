@@ -1,18 +1,10 @@
-import NextLink from "next/link";
-import {
-  Link,
-  Heading,
-  Text,
-  Stack,
-  Button,
-  Input,
-  Flex,
-} from "@chakra-ui/react";
-import { Vagon } from "../types/vagon";
-import { Photo } from "../types/photo";
-import { useRef } from "react";
-import { useRouter } from "next/router";
-import { PlusSquareIcon } from "@chakra-ui/icons";
+import NextLink from 'next/link';
+import { Link, Heading, Text, Stack, Button, Input, Flex } from '@chakra-ui/react';
+import { Vagon } from '../types/vagon';
+import { Photo } from '../types/photo';
+import { useRef } from 'react';
+import { useRouter } from 'next/router';
+import { PlusSquareIcon } from '@chakra-ui/icons';
 
 type Props = {
   vagon: Vagon;
@@ -33,23 +25,12 @@ export const VagonCard = ({ vagon }: Props) => {
         src: base64String,
         date: Date.now(),
       };
-      const photos: Photo[] = JSON.parse(
-        localStorage.getItem("vagonPhotos") || "[]"
-      );
-      const filtered = photos.filter(
-        (photo) => photo.vagonNumber !== vagon.VagonNumber
-      );
-      localStorage.setItem(
-        "vagonPhotos",
-        JSON.stringify([newPhoto, ...filtered])
-      );
-      alert("Фото сохранено локально!");
+      const photos: Photo[] = JSON.parse(localStorage.getItem('vagonPhotos') || '[]');
+      const filtered = photos.filter((photo) => photo.vagonNumber !== vagon.VagonNumber);
+      localStorage.setItem('vagonPhotos', JSON.stringify([newPhoto, ...filtered]));
+      alert('Фото сохранено локально!');
     };
     reader.readAsDataURL(file);
-  };
-
-  const handleCardClick = () => {
-    router.push(`/vagons/${vagon.VagonNumber}`);
   };
 
   return (
@@ -61,7 +42,7 @@ export const VagonCard = ({ vagon }: Props) => {
       p={4}
       bg="gray.100"
       borderColor="heroGradientEnd"
-      _dark={{ bg: "gray.800" }}
+      _dark={{ bg: 'gray.800' }}
       flexDirection="column"
       justifyContent="center"
       gap={5}
@@ -69,14 +50,14 @@ export const VagonCard = ({ vagon }: Props) => {
       willChange="transform"
       transformOrigin="center"
       _hover={{
-        transform: "scale(1.03)",
-        borderColor: "heroGradientStart",
+        transform: 'scale(1.03)',
+        borderColor: 'heroGradientStart',
       }}
     >
       <Link
         as={NextLink}
         href={`/vagons/${vagon.VagonNumber}`}
-        _hover={{ textDecoration: "none", color: "heroGradientStart" }}
+        _hover={{ textDecoration: 'none', color: 'heroGradientStart' }}
       >
         <Heading color="heroGradientStart" size="md" cursor="pointer">
           Вагон №{vagon.VagonNumber}
@@ -86,27 +67,19 @@ export const VagonCard = ({ vagon }: Props) => {
         <Text fontSize="sm">Тип: {vagon.VagonType}</Text>
         <Text fontSize="sm">Груз: {vagon.CargoName}</Text>
         <Text fontSize="sm">Владелец: {vagon.OwnerName}</Text>
-        <Text fontSize="sm">
-          Станция отправки: {vagon.DepartureStationName}
-        </Text>
+        <Text fontSize="sm">Станция отправки: {vagon.DepartureStationName}</Text>
       </Stack>
       <Button
         leftIcon={<PlusSquareIcon />}
         bg="gray.300"
-        _dark={{ bg: "gray.700" }}
+        _dark={{ bg: 'gray.700' }}
         color="heroGradientEnd"
-        _hover={{ color: "heroGradientStart" }}
+        _hover={{ color: 'heroGradientStart' }}
         onClick={() => inputRef.current?.click()}
       >
         Загрузить фото
       </Button>
-      <Input
-        type="file"
-        accept="image/*"
-        display="none"
-        ref={inputRef}
-        onChange={handleUpload}
-      />
+      <Input type="file" accept="image/*" display="none" ref={inputRef} onChange={handleUpload} />
     </Flex>
   );
 };

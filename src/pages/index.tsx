@@ -1,17 +1,9 @@
-import {
-  Heading,
-  Text,
-  Stack,
-  HStack,
-  Image,
-  Link,
-  useColorMode,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Heading, Text, Stack, HStack, Image, Link, useColorMode } from '@chakra-ui/react';
+import NextLink from 'next/link';
 
 const Index = () => {
   const { colorMode } = useColorMode();
-  const isDark = colorMode === "dark";
+  const isDark = colorMode === 'dark';
 
   return (
     <Stack spacing={8} align="center" justify="center" h="100vh">
@@ -20,8 +12,8 @@ const Index = () => {
         Artport
       </Heading>
       <Text fontSize="xl" color="text" textAlign="center" maxW="600px">
-        Сервис для просмотра вагонов, галереи и управления железнодорожными
-        данными. Удобно, быстро, современно.
+        Сервис для просмотра вагонов, галереи и управления железнодорожными данными. Удобно, быстро,
+        современно.
       </Text>
       <HStack spacing={6}>
         <Link
@@ -32,11 +24,11 @@ const Index = () => {
           borderRadius="md"
           fontWeight="bold"
           bg="heroGradientStart"
-          color={isDark ? "gray.800" : "white"}
+          color={isDark ? 'gray.800' : 'white'}
           fontSize="lg"
           _hover={{
-            bg: isDark ? "pink.400" : "purple.600",
-            textDecoration: "none",
+            bg: isDark ? 'pink.400' : 'purple.600',
+            textDecoration: 'none',
           }}
           display="inline-block"
         >
@@ -50,11 +42,11 @@ const Index = () => {
           borderRadius="md"
           fontWeight="bold"
           bg="heroGradientEnd"
-          color={isDark ? "gray.800" : "white"}
+          color={isDark ? 'gray.800' : 'white'}
           fontSize="lg"
           _hover={{
-            bg: isDark ? "yellow.400" : "pink.500",
-            textDecoration: "none",
+            bg: isDark ? 'yellow.400' : 'pink.500',
+            textDecoration: 'none',
           }}
           display="inline-block"
         >

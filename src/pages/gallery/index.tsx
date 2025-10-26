@@ -10,43 +10,41 @@ import {
   SimpleGrid,
   Text,
   VStack,
-} from "@chakra-ui/react";
-import { VagonPhoto } from "../../components/VagonPhoto";
-import { Photo } from "../../types/photo";
-import { useEffect, useState } from "react";
-import { ChevronDownIcon, SearchIcon } from "@chakra-ui/icons";
-import { useFilterSortPaginate } from "../../hooks/useFilterSortPaginate";
-import Pagination from "../../components/Pagination";
+} from '@chakra-ui/react';
+import { VagonPhoto } from '../../components/VagonPhoto';
+import { Photo } from '../../types/photo';
+import { useEffect, useState } from 'react';
+import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
+import { useFilterSortPaginate } from '../../hooks/useFilterSortPaginate';
+import Pagination from '../../components/Pagination';
 
 export default function GalleryPage() {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [visibleCount, setVisibleCount] = useState(12);
-  const [searchVagonNumber, setSearchVagonNumber] = useState("");
-  const [sortOption, setSortOption] = useState("");
+  const [searchVagonNumber, setSearchVagonNumber] = useState('');
+  const [sortOption, setSortOption] = useState('');
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedPhotos = JSON.parse(
-        localStorage.getItem("vagonPhotos") || "[]"
-      );
-      setPhotos(storedPhotos);
-    }
+    setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        const storedPhotos = JSON.parse(localStorage.getItem('vagonPhotos') || '[]');
+        setPhotos(storedPhotos);
+      }
+    }, 500);
   }, []);
 
   const filterFn = (photo: Photo) =>
-    searchVagonNumber === "" || photo.vagonNumber.includes(searchVagonNumber);
+    searchVagonNumber === '' || photo.vagonNumber.includes(searchVagonNumber);
 
   const sortFn = (() => {
     switch (sortOption) {
-      case "option1":
-        return (a: Photo, b: Photo) =>
-          Number(a.vagonNumber) - Number(b.vagonNumber);
-      case "option2":
-        return (a: Photo, b: Photo) =>
-          Number(b.vagonNumber) - Number(a.vagonNumber);
-      case "option3":
+      case 'option1':
+        return (a: Photo, b: Photo) => Number(a.vagonNumber) - Number(b.vagonNumber);
+      case 'option2':
+        return (a: Photo, b: Photo) => Number(b.vagonNumber) - Number(a.vagonNumber);
+      case 'option3':
         return (a: Photo, b: Photo) => Number(a.date) - Number(b.date);
-      case "option4":
+      case 'option4':
         return (a: Photo, b: Photo) => Number(b.date) - Number(a.date);
       default:
         return null;
@@ -55,7 +53,7 @@ export default function GalleryPage() {
 
   const handleDelete = (vagonNumber: string) => {
     const updatedPhotos = photos.filter((p) => p.vagonNumber !== vagonNumber);
-    localStorage.setItem("vagonPhotos", JSON.stringify(updatedPhotos));
+    localStorage.setItem('vagonPhotos', JSON.stringify(updatedPhotos));
     setPhotos(updatedPhotos);
   };
 
@@ -63,8 +61,8 @@ export default function GalleryPage() {
     useFilterSortPaginate(photos, filterFn, sortFn, visibleCount);
 
   const clear = () => {
-    setSearchVagonNumber("");
-    setSortOption("");
+    setSearchVagonNumber('');
+    setSortOption('');
     setCurrentPage(0);
   };
 
@@ -76,7 +74,7 @@ export default function GalleryPage() {
         </Text>
         <Flex align="center" justify="space-between" gap={5} w="full">
           <InputGroup w="100%">
-            <InputLeftElement pointerEvents={"none"}>
+            <InputLeftElement pointerEvents={'none'}>
               <SearchIcon color="text" />
             </InputLeftElement>
             <Input
@@ -84,12 +82,12 @@ export default function GalleryPage() {
               placeholder="95621272"
               color="text"
               bg="gray.50"
-              _dark={{ bg: "gray.900", color: "text" }}
+              _dark={{ bg: 'gray.900', color: 'text' }}
               _focus={{
-                borderColor: "heroGradientStart",
-                boxShadow: "0 0 0 1px var(--chakra-colors-heroGradientStart)",
+                borderColor: 'heroGradientStart',
+                boxShadow: '0 0 0 1px var(--chakra-colors-heroGradientStart)',
               }}
-              _hover={{ borderColor: "heroGradientEnd" }}
+              _hover={{ borderColor: 'heroGradientEnd' }}
               value={searchVagonNumber}
               onChange={(e) => setSearchVagonNumber(e.target.value)}
             />
@@ -105,10 +103,10 @@ export default function GalleryPage() {
           placeholder="Умолчанию"
           color="text"
           _focus={{
-            borderColor: "heroGradientStart",
-            boxShadow: "0 0 0 1px var(--chakra-colors-heroGradientStart)",
+            borderColor: 'heroGradientStart',
+            boxShadow: '0 0 0 1px var(--chakra-colors-heroGradientStart)',
           }}
-          _hover={{ borderColor: "heroGradientEnd" }}
+          _hover={{ borderColor: 'heroGradientEnd' }}
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
         >
@@ -144,18 +142,14 @@ export default function GalleryPage() {
             leftIcon={<ChevronDownIcon />}
             onClick={() => setVisibleCount(visibleCount + 12)}
             color="heroGradientEnd"
-            _hover={{ color: "heroGradientStart" }}
+            _hover={{ color: 'heroGradientStart' }}
           >
             Показать еще
           </Button>
         </Box>
       )}
-      <Box width={"full"}>
-        <Pagination
-          pageCount={pageCount}
-          currentPage={currentPage}
-          onPageChange={setCurrentPage}
-        />
+      <Box width={'full'}>
+        <Pagination pageCount={pageCount} currentPage={currentPage} onPageChange={setCurrentPage} />
       </Box>
     </VStack>
   );

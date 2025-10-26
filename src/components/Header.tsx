@@ -12,16 +12,16 @@ import {
   IconButton,
   MenuList,
   MenuItem,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
-import { DarkModeSwitch } from "./DarkModeSwitch";
-import { HamburgerIcon } from "@chakra-ui/icons";
+} from '@chakra-ui/react';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { DarkModeSwitch } from './DarkModeSwitch';
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 const routes = [
-  { label: "Главная", href: "/" },
-  { label: "Вагони", href: "/vagons" },
-  { label: "Галерея", href: "/gallery" },
+  { label: 'Главная', href: '/' },
+  { label: 'Вагони', href: '/vagons' },
+  { label: 'Галерея', href: '/gallery' },
 ];
 
 export const Header = (props: FlexProps) => {
@@ -37,7 +37,7 @@ export const Header = (props: FlexProps) => {
       bg="gray.50"
       borderBottom="2px solid"
       borderColor="gray.300"
-      _dark={{ bg: "gray.900", borderColor: "gray.700" }}
+      _dark={{ bg: 'gray.900', borderColor: 'gray.700' }}
       {...props}
       zIndex={10}
     >
@@ -56,7 +56,7 @@ export const Header = (props: FlexProps) => {
           fontWeight="bold"
           fontSize="3xl"
           color="text"
-          _hover={{ textDecoration: "none", color: "heroGradientStart" }}
+          _hover={{ textDecoration: 'none', color: 'heroGradientStart' }}
           display="flex"
           alignItems="center"
           h="100px"
@@ -65,11 +65,7 @@ export const Header = (props: FlexProps) => {
         </Link>
         {isMobile ? (
           <Menu>
-            <MenuButton
-              as={IconButton}
-              icon={<HamburgerIcon />}
-              variant="outline"
-            />
+            <MenuButton as={IconButton} icon={<HamburgerIcon />} variant="outline" />
             <MenuList>
               {routes.map((route) => (
                 <MenuItem as={NextLink} href={route.href} key={route.href}>
@@ -84,8 +80,8 @@ export const Header = (props: FlexProps) => {
             <Tabs index={activeIndex} variant="line">
               <TabList
                 sx={{
-                  borderBottom: "none",
-                  boxShadow: "none",
+                  borderBottom: 'none',
+                  boxShadow: 'none',
                 }}
               >
                 {routes.map((route) => (
@@ -99,14 +95,14 @@ export const Header = (props: FlexProps) => {
                     color="text"
                     px={4}
                     _selected={{
-                      color: "heroGradientStart",
-                      fontWeight: "bold",
-                      borderBottom: "3px solid",
-                      borderColor: "heroGradientStart",
+                      color: 'heroGradientStart',
+                      fontWeight: 'bold',
+                      borderBottom: '3px solid',
+                      borderColor: 'heroGradientStart',
                     }}
                     _hover={{
-                      color: "heroGradientEnd",
-                      textDecoration: "none",
+                      color: 'heroGradientEnd',
+                      textDecoration: 'none',
                     }}
                   >
                     {route.label}

@@ -1,6 +1,6 @@
-import React from "react";
-import { HStack, IconButton, Button } from "@chakra-ui/react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import React from 'react';
+import { HStack, IconButton, Button } from '@chakra-ui/react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
 type PaginationProps = {
   pageCount: number;
@@ -8,11 +8,7 @@ type PaginationProps = {
   onPageChange: (selected: number) => void;
 };
 
-const Pagination = ({
-  pageCount,
-  currentPage,
-  onPageChange,
-}: PaginationProps) => {
+const Pagination = ({ pageCount, currentPage, onPageChange }: PaginationProps) => {
   if (pageCount <= 1) return null;
 
   const siblingCount = 1;
@@ -25,20 +21,16 @@ const Pagination = ({
     for (let i = 0; i < pageCount; i++) range.push(i);
   } else {
     const leftSibling = Math.max(currentPage - siblingCount, boundaryCount);
-    const rightSibling = Math.min(
-      currentPage + siblingCount,
-      pageCount - boundaryCount - 1
-    );
+    const rightSibling = Math.min(currentPage + siblingCount, pageCount - boundaryCount - 1);
 
     // Початок
     for (let i = 0; i < boundaryCount; i++) range.push(i);
     // ...
-    if (leftSibling > boundaryCount) range.push("start-ellipsis");
+    if (leftSibling > boundaryCount) range.push('start-ellipsis');
     // Середина
     for (let i = leftSibling; i <= rightSibling; i++) range.push(i);
     // ...
-    if (rightSibling < pageCount - boundaryCount - 1)
-      range.push("end-ellipsis");
+    if (rightSibling < pageCount - boundaryCount - 1) range.push('end-ellipsis');
     // Кінець
     for (let i = pageCount - boundaryCount; i < pageCount; i++) range.push(i);
   }
@@ -53,9 +45,9 @@ const Pagination = ({
         onClick={() => onPageChange(currentPage - 1)}
       />
       {range.map((item, idx) => {
-        if (item === "start-ellipsis" || item === "end-ellipsis") {
+        if (item === 'start-ellipsis' || item === 'end-ellipsis') {
           return (
-            <Button key={item + "" + idx} variant="ghost" isDisabled>
+            <Button key={item + '' + idx} variant="ghost" isDisabled>
               ...
             </Button>
           );
@@ -63,11 +55,11 @@ const Pagination = ({
         return (
           <Button
             key={item}
-            variant={item === currentPage ? "solid" : "ghost"}
-            color={item === currentPage ? "heroGradientStart" : "text"}
-            fontWeight={item === currentPage ? "bold" : "normal"}
-            fontSize={item === currentPage ? "lg" : "md"}
-            _hover={{ color: "heroGradientEnd" }}
+            variant={item === currentPage ? 'solid' : 'ghost'}
+            color={item === currentPage ? 'heroGradientStart' : 'text'}
+            fontWeight={item === currentPage ? 'bold' : 'normal'}
+            fontSize={item === currentPage ? 'lg' : 'md'}
+            _hover={{ color: 'heroGradientEnd' }}
             onClick={() => onPageChange(item as number)}
           >
             {(item as number) + 1}

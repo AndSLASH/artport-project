@@ -1,7 +1,7 @@
-import NextLink from "next/link";
-import { Link, Button, Flex, Image, Text, VStack } from "@chakra-ui/react";
-import { Photo } from "../types/photo";
-import { SmallCloseIcon } from "@chakra-ui/icons";
+import NextLink from 'next/link';
+import { Link, Button, Flex, Image, Text, VStack } from '@chakra-ui/react';
+import { Photo } from '../types/photo';
+import { SmallCloseIcon } from '@chakra-ui/icons';
 
 type Props = {
   photo: Photo;
@@ -21,20 +21,20 @@ export const VagonPhoto = ({ photo, onDelete }: Props) => (
     borderColor="heroGradientEnd"
     overflow="hidden"
     bg="gray.100"
-    _dark={{ bg: "gray.800" }}
+    _dark={{ bg: 'gray.800' }}
     textAlign="center"
     transition="transform 0.2s, box-shadow 0.2s"
     willChange="transform"
     transformOrigin="center"
     _hover={{
-      transform: "scale(1.03)",
-      borderColor: "heroGradientStart",
+      transform: 'scale(1.03)',
+      borderColor: 'heroGradientStart',
     }}
   >
     <Link
       as={NextLink}
       href={`/vagons/${photo.vagonNumber}`}
-      _hover={{ textDecoration: "none", color: "heroGradientStart" }}
+      _hover={{ textDecoration: 'none', color: 'heroGradientStart' }}
     >
       <Image
         display="flex"
