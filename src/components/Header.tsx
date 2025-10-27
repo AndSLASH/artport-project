@@ -16,6 +16,7 @@ import {
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { DarkModeSwitch } from './DarkModeSwitch';
+import AuthButtons from './AuthButtons';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
 const routes = [
@@ -73,6 +74,7 @@ export const Header = (props: FlexProps) => {
                 </MenuItem>
               ))}
               <DarkModeSwitch />
+              <AuthButtons />
             </MenuList>
           </Menu>
         ) : (
@@ -111,6 +113,7 @@ export const Header = (props: FlexProps) => {
               </TabList>
             </Tabs>
             <DarkModeSwitch />
+            <AuthButtons />
           </>
         )}
       </Flex>

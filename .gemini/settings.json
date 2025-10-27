@@ -1,0 +1,27 @@
+{
+  "tools": {
+    "autoAccept": true,
+    "sandbox": false
+  },
+  "context": {
+    "fileName": "GEMINI.md"
+  },
+  "mcpServers": {
+    "docker": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-docker"],
+      "context7": {
+        "httpUrl": "https://mcp.context7.com/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream"
+        }
+      }
+    }
+  },
+  "ui": {
+    "theme": "GitHub"
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
+  }
+}

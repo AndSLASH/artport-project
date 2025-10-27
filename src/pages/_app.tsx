@@ -1,4 +1,5 @@
 import { ChakraProvider, Flex } from '@chakra-ui/react';
+import { SessionProvider } from 'next-auth/react';
 import '../styles/globals.css';
 
 import theme from '../theme';
@@ -34,17 +35,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router]);
 
   return (
-    <ChakraProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>
-        <Flex direction="column" minH="100vh">
-          <Header />
-          <Container flex="1">
-            <Main>{loading ? <Loader /> : <Component {...pageProps} />}</Main>
-          </Container>
-          <Footer />
-        </Flex>
-      </QueryClientProvider>
-    </ChakraProvider>
+    <SessionProvider>
+      <ChakraProvider theme={theme}>
+        <QueryClientProvider client={queryClient}>
+          <Flex direction="column" minH="100vh">
+            <Header />
+            <Container flex="1">
+              <Main>{loading ? <Loader /> : <Component {...pageProps} />}</Main>
+            </Container>
+            <Footer />
+          </Flex>
+        </QueryClientProvider>
+      </ChakraProvider>
+    </SessionProvider>
   );
 }
 
